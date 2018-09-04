@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FAncybox</title>
+    <link rel="stylesheet" href="jquery.fancybox.css" />
+    <style>
+        .fancybox-slide--video .fancybox-content {
+        width : 800px;
+        height : 600px;
+        max-width : 100%;
+        max-height : calc( 100% - 100px );
+        margin: 50px 0;
+        overflow: visible;
+        background: #000;
+        }
+
+        .button-close,
+        .button-previous,
+        .button-next {
+        position: absolute;
+        width: 44px;
+        height: 44px;
+        background: #000;
+        text-align: center;
+        line-height: 44px;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 50%;
+        font-size: 16px;
+        }
+
+        .button-previous,
+        .button-next {
+        top: 50%;
+        margin-top: -22px;
+        line-height: 42px;
+        }
+
+        .button-previous {
+        left: -50px;
+        }
+
+        .button-next {
+        right: -50px;
+        }
+
+        .button-close {
+        top: -44px;
+        right: -44px;
+        font-size: 22px;
+        color: rgba(255,255,255,0.8);
+        }
+    </style>
+</head>
+<body>
+    
+<a data-fancybox="gallery" href="https://via.placeholder.com/100x500">asdfgasdf</a>
+<a data-fancybox="gallery" href="https://via.placeholder.com/200x600">asdfgasdf</a>
+<a data-fancybox="gallery" href="https://via.placeholder.com/300x550">asdfgasdf</a>
+<a data-fancybox="gallery" href="https://via.placeholder.com/400x510">asdfgasdf</a>
+<a data-fancybox="gallery" href="https://via.placeholder.com/500x560">asdfgasdf</a>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="jquery.fancybox.min.js"></script>
+
+<script>
+    $('[data-fancybox="gallery"]').fancybox({
+        infobar: false,
+        arrows : false,
+         loop: true,
+         afterLoad : function( instance, current, slide ) {
+            if ( instance.group.length > 1 && current.$content ) {
+            current.$content.append('<a data-fancybox-next class="button-next" href="javascript:;">→</a><a data-fancybox-prev class="button-previous" href="javascript:;">←</a>');
+            }
+            current.$content.append('<a data-fancybox-close class="button-close" href="javascript:;">×</a>');
+        }
+    });
+    
+</script>
+
+</body>
+</html>
